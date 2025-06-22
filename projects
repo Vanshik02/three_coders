@@ -1,6 +1,0 @@
-git init
-git remote add origin https://github.com/yourusername/three_coders.git
-git pull origin main --allow-unrelated-histories
-git add .
-git commit -m "Add C and C++ projects"
-git push -u origin main
