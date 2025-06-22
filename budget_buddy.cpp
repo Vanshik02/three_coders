@@ -32,6 +32,7 @@ private:
             : payer(p), amount(a), category(cat), note(n), group(g), isRecurring(r), timestamp(t), shares(s) {}
     };
 
+
     unordered_map<string, double> balances;
     vector<Expense> expenses;
     stack<pair<vector<Expense>, unordered_map<string, double>>> undoStack;
@@ -46,6 +47,7 @@ private:
         return string(buffer);
     }
 
+
     string generateQRCode(const string& data) {
         if (system("which qrencode > /dev/null 2>&1") != 0) {
             return "QRencode tool not found!";
@@ -55,15 +57,18 @@ private:
         return "QR Code generated as qr.png";
     }
 
+
     bool fileExists(const string& filename) {
         struct stat buffer;
         return (stat(filename.c_str(), &buffer) == 0);
     }
 
+
     void pushToUndoStack() {
         undoStack.push({expenses, balances});
         while (!redoStack.empty()) redoStack.pop();
     }
+
 
     void printExpense(const Expense& e, int index = -1) {
         if (index != -1) {
